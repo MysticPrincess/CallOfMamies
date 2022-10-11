@@ -17,31 +17,22 @@ public class Test : MonoBehaviour
 		target = transform.position;
 	}
 
-	void Update()
-	{
+	public void Launch()
+    {
 		GameObject instantiatedObject;
 		Ray ray;
 		RaycastHit hit;
 
-		if (Input.GetMouseButtonDown(0))
-        {
-			//target = Input.mousePosition;
-			ray = cam.ScreenPointToRay(Input.mousePosition);
-			Vector3 pos;
-			if (Physics.Raycast(ray, out hit, Mathf.Infinity))
-			{
-				pos = hit.point;
-				instantiatedObject = Instantiate(obj, origin.position, Quaternion.identity);
-				float dist = Vector3.Distance(instantiatedObject.transform.position, pos);
-				Debug.Log(dist);
-				StartCoroutine(LerpPosition(instantiatedObject.transform, pos, speed * dist));
-			}
-
+		ray = cam.ScreenPointToRay(Input.mousePosition);
+		Vector3 pos;
+		if (Physics.Raycast(ray, out hit, Mathf.Infinity))
+		{
+			pos = hit.point;
+			instantiatedObject = Instantiate(obj, origin.position, Quaternion.identity);
+			float dist = Vector3.Distance(instantiatedObject.transform.position, pos);
+			Debug.Log(dist);
+			StartCoroutine(LerpPosition(instantiatedObject.transform, pos, speed * dist));
 		}
-
-		
-		
-
 	}
 
 	IEnumerator LerpPosition(Transform obj, Vector3 targetPosition, float duration)
