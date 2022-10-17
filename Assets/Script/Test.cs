@@ -9,8 +9,8 @@ public class Test : MonoBehaviour
 	private Vector3 target;
 	public Camera cam;
 	public float speed = 0.5f;
-	
 
+	
 	void Start()
 	{
 
