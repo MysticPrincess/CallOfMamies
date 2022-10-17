@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
+
 public class RandomSpawn : MonoBehaviour
 {
     public Animator animator;
@@ -16,63 +17,54 @@ public class RandomSpawn : MonoBehaviour
         Debug.Log(score);
     }
 
-    /* public GameObject[] lespositions;
-     public GameObject prefab;
+
+    public GameObject[] lespositions;
+    public GameObject[] lesanimaux; 
+    public GameObject animal; 
+
+    // Start is called before the first frame update
+    void Start()
+    {
+        //tableau aléatoire des indices des positions
+        int NbIndice = 4; 
+        int[] indice = new int[NbIndice];
+        HashSet<int> hashset = new HashSet<int>();
+        System.Random r = new System.Random();
+
+        while (hashset.Count < indice.Length)
+        {
+            hashset.Add(r.Next(0, lespositions.Length-1));
+        }
+        hashset.CopyTo(indice);
+
+        //tableau aléatoire des animaux
+        /*
+        int[] animaux = new int[NbIndice];
+        for(int j=0; j<NbIndice; j++)
+        {
+            animaux[j] = Random.Range(0, lesanimaux.Length - 1); 
+        }
+        */
 
 
-     // Start is called before the first frame update
-     void Start()
-     {
-         //int [] RandomIndice = new int[5];
-         List<int> indice = new List<int>();
-         HashSet<int> hashset = new HashSet<int>();
-         //int size = 0; 
-         indice.Add(Random.Range(0, 10));
-         int temp = 0;
-
-         //Debug.Log("before la boucle");
-         for (int i = 0; i < 5; i++)
-         {
-             int flag = 0;
-             //Debug.Log("indice i=");
-             //Debug.Log(i);           
-             int ok = 0;
-
-             while (ok != 1)
-             {
-                 temp = Random.Range(0, 10);
-                 for (int j = 0; j < indice.Count; j++)
-                 {
-                        /* if (temp== indice[j])
-                         {
-                             flag = 1;
-                             j = indice.Count;
-
-                         }*/
-    /*    }
+        for (int i=0; i<NbIndice; i++)
+        {
+            Instantiate(animal, lespositions[indice[i]].transform.position, Quaternion.identity);
+            Debug.Log(indice[i]);
+        }
 
 
-            if (flag == 0)
-            {
-                ok = 1;
-                indice.Add(temp);
-            }
-     }
-
-
-
-        //  Debug.Log(temp);
+        //pour des animaux différent
+        /*
+        for (int i = 0; i < NbIndice; i++)
+        {
+            Instantiate(lesanimaux[i], lespositions[indice[i]].transform.position, Quaternion.identity);
+            Debug.Log(indice[i]);
+        }
+        */
 
     }
 
-
-
-    //transform.position = lespositions[randomNb].transform.position;
-    //Instantiate(prefab, lespositions[randomNb].transform.position, Quaternion.identity);
-
-
 }
-    */
 
-}
 
