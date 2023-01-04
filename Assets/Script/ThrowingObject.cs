@@ -26,6 +26,7 @@ public class ThrowingObject : MonoBehaviour
 
     private void Start()
     {
+        Debug.Log("Coucou");
         readyToThrow = true;
     }
 
